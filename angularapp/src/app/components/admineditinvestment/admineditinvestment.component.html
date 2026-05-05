@@ -1,0 +1,93 @@
+
+<div class="container">
+  <div class="card">
+    <h2 class="card-title">Edit Investment</h2>
+    <form (ngSubmit)="onUpdateInvestment()" #editForm="ngForm">
+
+      <div class="form-group">
+        <label for="investmentName">Investment Name<span class="required">*</span></label>
+        <input type="text" id="investmentName" name="investmentName" [(ngModel)]="investment.Name"
+               placeholder="Investment Name" #nameNgModel="ngModel" required />
+        <div class="error-message" *ngIf="nameNgModel.invalid && (nameNgModel.dirty || nameNgModel.touched)"style="color: red;">
+          Name is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description<span class="required">*</span></label>
+        <textarea id="description" name="description" [(ngModel)]="investment.Description"
+                  placeholder="Investment Description" #descNgModel="ngModel" required></textarea>
+        <div class="error-message" *ngIf="descNgModel.invalid && (descNgModel.dirty || descNgModel.touched)"style="color: red;">
+          Description is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="expectedReturn">Expected Return (%)<span class="required">*</span></label>
+        <input type="number" id="expectedReturn" name="expectedReturn" [(ngModel)]="investment.ExpectedReturn"
+               placeholder="Expected Annual Return" #expectedNgModel="ngModel" required min="0" />
+        <div class="error-message" *ngIf="expectedNgModel.invalid && (expectedNgModel.dirty || expectedNgModel.touched)"style="color: red;">
+          Expected Return is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="riskLevel">Risk Level<span class="required">*</span></label>
+        <select id="riskLevel" name="riskLevel" [(ngModel)]="investment.RiskLevel"  #riskNgModel="ngModel"  required>
+        <option value="" disabled>Select a risk level</option>
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+        </select>
+        <div class="error-message"
+                    *ngIf="riskNgModel.invalid && (riskNgModel.dirty || riskNgModel.touched)" style="color: red;">
+                    Risk Level is required
+        </div>
+        </div>
+
+      <div class="form-group">
+        <label for="duration">Duration (Months)<span class="required">*</span></label>
+        <input type="number" id="duration" name="duration" [(ngModel)]="investment.DurationInMonths"
+               placeholder="Duration in Months" #durationNgModel="ngModel" required min="1" />
+        <div class="error-message" *ngIf="durationNgModel.invalid && (durationNgModel.dirty || durationNgModel.touched)"style="color: red;">
+          Duration is required
+        </div>
+        <div *ngIf="investment.DurationInMonths < 1">
+          <small style="color: red;">Duration must be greater than 0 months.</small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="minInvestment">Minimum Investment<span class="required">*</span></label>
+        <input type="number" id="minInvestment" name="minInvestment" [(ngModel)]="investment.MinimumInvestment"
+               placeholder="Minimum Investment" #mininvNgModel="ngModel" required min="1" />
+        <div class="error-message" *ngIf="mininvNgModel.invalid && (mininvNgModel.dirty || mininvNgModel.touched)"style="color: red;">
+          Minimum Investment is required
+        </div>
+        <div *ngIf="investment.MinimumInvestment < 1">
+          <small style="color: red;">Minimum investment must be greater than 0.</small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="investmentType">Investment Type<span class="required">*</span></label>
+        <input type="text" id="investmentType" name="investmentType" [(ngModel)]="investment.InvestmentType"
+               placeholder="Investment Type (e.g., Stocks, Bonds)" #invtypeNgModel="ngModel" required />
+        <div class="error-message" *ngIf="invtypeNgModel.invalid && (invtypeNgModel.dirty || invtypeNgModel.touched)"style="color: red;">
+          Investment Type is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="documentsRequired">Documents Required<span class="required">*</span></label>
+        <input type="text" id="documentsRequired" name="documentsRequired" [(ngModel)]="investment.DocumentsRequired"
+               placeholder="Documents Required" #docreqNgModel="ngModel" required />
+        <div class="error-message" *ngIf="docreqNgModel.invalid && (docreqNgModel.dirty || docreqNgModel.touched)"style="color: red;">
+          Documents Required is required
+        </div>
+      </div>
+
+      <button type="submit" class="btn-update" [disabled]="!editForm.valid">Update Investment</button>
+    </form>
+  </div>
+</div>

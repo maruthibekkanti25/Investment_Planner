@@ -1,0 +1,227 @@
+body {
+  background-color: #000;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+h3{
+  text-align: center;
+  color: #ed3a3a;
+  
+  text-shadow: 0 0 10px rgba(124, 58, 237, 0.6);
+  margin: 2rem 0;
+}
+
+
+
+.container {
+  max-width: 95%;
+  margin: 6rem auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 16px;
+  box-shadow: 0 0 25px rgba(124, 58, 237, 0.15);
+  backdrop-filter: blur(10px);
+  animation: fadeIn 0.5s ease;
+}
+
+.container h2 {
+  text-align: center;
+  color: #7c3aed;
+  font-size: 2rem;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(124, 58, 237, 0.6);
+  margin-bottom: 2rem;
+}
+
+.filters {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.8rem;
+}
+
+.filters input,
+.filters select {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid #7c3aed;
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  color: #fff;
+  outline: none;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  background-color: black !important;
+}
+
+.filters input:focus,
+.filters select:focus {
+  border-color: #a78bfa;
+  box-shadow: 0 0 10px rgba(124, 58, 237, 0.6);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 15px rgba(124, 58, 237, 0.15);
+}
+
+thead {
+  background: rgba(124, 58, 237, 0.2);
+}
+
+th, td {
+  padding: 1rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: #e0e0e0;
+  font-size: 0.95rem;
+}
+
+th {
+  color: #7c3aed;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+tr {
+  background-color: rgba(15, 0, 0, 0.7);
+}
+
+tr:hover {
+  background: rgba(124, 58, 237, 0.08);
+  transition: background 0.3s ease;
+}
+
+button {
+  border-radius: 25px;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:nth-child(1) {
+  background: rgba(40, 167, 69, 0.15);
+  border: 1px solid #28a745;
+  color: #28a745;
+}
+button:nth-child(1):hover {
+  background: #28a745;
+  color: #000;
+  box-shadow: 0 0 10px rgba(40, 167, 69, 0.6);
+}
+
+button:nth-child(2) {
+  background: rgba(255, 76, 76, 0.15);
+  border: 1px solid #ff4c4c;
+  color: #ff4c4c;
+}
+button:nth-child(2):hover {
+  background: #ff4c4c;
+  color: #000;
+  box-shadow: 0 0 10px rgba(255, 76, 76, 0.6);
+}
+
+button:nth-child(3) {
+  background: rgba(124, 58, 237, 0.15);
+  border: 1px solid #7c3aed;
+  color: #7c3aed;
+}
+button:nth-child(3):hover {
+  background: #7c3aed;
+  color: #000;
+  box-shadow: 0 0 10px rgba(124, 58, 237, 0.6);
+}
+
+.custom-modal {
+  position: relative;
+  top: -450px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 15, 15, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  animation: fadeIn 0.3s ease;
+  height:400px;
+}
+
+.modal-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border-radius: 12px;
+  padding: 2rem;
+  width: 500px;
+  color: #fff;
+  box-shadow: 0 6px 25px rgba(124, 58, 237, 0.4);
+  position: relative;
+  animation: slideUp 0.4s ease;
+}
+
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 1.5rem;
+  color: #ff4c4c;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.download-btn {
+  margin-top: 1rem;
+  background: rgba(124, 58, 237, 0.15);
+  border: 1px solid #7c3aed;
+  color: #7c3aed;
+  border-radius: 25px;
+  padding: 0.6rem 1.2rem;
+  transition: all 0.3s ease;
+}
+.download-btn:hover {
+  background: #7c3aed;
+  color: #000;
+}
+
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem; /* Reduced spacing */
+  margin-bottom: 1rem; /* Optional: adds balance */
+}
+
+
+
+.pagination-controls button {
+  border: 1px solid #7c3aed;
+  background: transparent;
+  color: #7c3aed;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+}
+
+.pagination-controls button:hover {
+  background: #7c3aed;
+  color: #000;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slideUp {
+  from { transform: translateY(25px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}

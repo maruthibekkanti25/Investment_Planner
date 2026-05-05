@@ -1,0 +1,21 @@
+<nav class="navbar">
+    <div class="logo">INVESTMENTPLANNER</div>
+    <ul>
+      <li>
+        <div class="user-info">
+          {{ username }}/{{ role }}
+        </div>
+      </li>
+      <li><a routerLink="/home">Home</a></li>
+      <li><a routerLink="/userViewInvestment">Investments</a></li>
+      <li><a routerLink="/userAppliedInvestment">Applied Investment</a></li>
+      <li class="dropdown">
+        Feedback
+        <ul class="dropdown-menu">
+          <li><a routerLink="/userAddFeedback">Post Feedback</a></li>
+          <li><a routerLink="/userViewFeedback">My Feedbacks</a></li>
+        </ul>
+      </li>
+      <li><button (click)="logout()">Logout</button></li>
+    </ul>
+  </nav>

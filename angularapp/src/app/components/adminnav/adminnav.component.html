@@ -1,0 +1,21 @@
+<nav class="navbar">
+  <div class="logo">INVESTMENTPLANNER</div>
+<ul>
+  <li>
+    <div class="user-info">
+      {{ username }}/{{ role }}
+    </div>
+  </li>
+    <li><a routerLink="/home">Home</a></li>
+    <li class="dropdown">
+      Investment
+      <ul class="dropdown-menu">
+        <li><a routerLink="/createInvestment">Add Investment</a></li>
+        <li><a routerLink="/viewInvestment">View Investment</a></li>
+      </ul>
+    </li>
+    <li><a routerLink="/requestedInvestment">Investment Requested</a></li>
+    <li><a routerLink="/adminViewFeedback">Feedbacks</a></li>
+    <li><button (click)="logout()">Logout</button></li>
+  </ul>
+</nav>

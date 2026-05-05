@@ -1,0 +1,10 @@
+<nav class="navbar" *ngIf="!isAuthenticated()">
+  <div class="logo">
+    <span class="highlight">INVESTMENT</span>PLANNER
+  </div>
+
+  <ul class="nav-links">
+    <li><a routerLink="/register">Register</a></li>
+    <li><a routerLink="/login">Login</a></li>
+  </ul>
+</nav>

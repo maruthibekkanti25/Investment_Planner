@@ -1,0 +1,31 @@
+<div class="container">
+        <div class="header">
+          <h1>My Feedback</h1>
+        </div>
+      
+        <table  class="feedback-table">
+          <thead>
+            <tr>
+              <th>S.No</th>
+              <th>Feedback</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let feedback of paginatedFeedbacks; let i = index">
+              <td>{{ (currentPage - 1) * itemsPerPage + i + 1 }}</td>
+              <td class="feedback-text">{{ feedback.FeedbackText }}</td>
+              <td class="action-cell">
+                <button class="btn-delete" (click)="showDeleteConfirmation(feedback.FeedbackId)">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>\
+        <h3 *ngIf="feedbacks.length == 0">No Feedbacks Found</h3>
+      
+        <div class="pagination-controls" *ngIf="feedbacks.length > itemsPerPage">
+          <button (click)="goToPreviousPage()" [disabled]="currentPage === 1">Previous</button>
+          <span>Page {{ currentPage }} of {{ totalPages }}</span>
+          <button (click)="goToNextPage()" [disabled]="currentPage === totalPages">Next</button>
+        </div>
+      </div>

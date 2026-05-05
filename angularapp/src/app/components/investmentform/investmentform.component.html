@@ -1,0 +1,41 @@
+<h2>Investment Application Form</h2>
+
+<form [formGroup]="investmentForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label>Investment Amount:</label>
+    <input type="number" formControlName="InvestmentAmount" />
+    <div *ngIf="investmentForm.get('InvestmentAmount')?.errors?.belowMinimum">
+      <small style="color: red;">
+        Investment amount must be at least {{ investmentDetails?.MinimumInvestment }}.
+      </small>
+    </div>
+  </div>
+
+  
+
+  <div>
+    <label>Investment Duration (months):</label>
+    <input type="number" formControlName="InvestmentDuration" />
+    <div *ngIf="investmentForm.get('InvestmentDuration')?.touched && investmentForm.get('InvestmentDuration')?.invalid">
+      <small *ngIf="investmentForm.get('InvestmentDuration')?.errors?.required" style="color: red;">
+        Investment duration is required.
+      </small>
+      <small *ngIf="investmentForm.get('InvestmentDuration')?.errors?.negativeDuration" style="color: red;">
+        Duration cannot be negative.
+      </small>
+    </div>
+  </div>
+
+  <div>
+    <label>Investment Reason:</label>
+    <textarea formControlName="InvestmentReason"></textarea>
+  </div>
+
+  <div>
+    <label>Proof:</label>
+    <input type="file" (change)="onFileChange($event)" />
+  </div>
+
+  <button type="submit" [disabled]="investmentForm.invalid">Submit</button>
+</form>
+

@@ -1,0 +1,30 @@
+<div class="login-container">
+  <h2>Login</h2>
+  <form (ngSubmit)= "onSubmit()" #loginForm="ngForm">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" [(ngModel)]="loginData.Email" required #emailRef="ngModel"
+        class="form-control" [ngClass]="{ 'is-invalid': formSubmitted && !loginData.Email }" />
+        <div *ngIf="formSubmitted && emailRef.invalid" class="invalid-feedback">
+          <div *ngIf="emailRef.errors?.required">Email is required.</div>
+   
+        </div>
+    </div>
+ 
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" [(ngModel)]="loginData.Password" required minlength="6"
+        class="form-control" #passwordRef="ngModel" [ngClass]="{ 'is-invalid': formSubmitted && !loginData.Password }" />
+        <div *ngIf="formSubmitted && passwordRef.invalid" class="invalid-feedback">
+          <div *ngIf="passwordRef.errors?.required">Password is required.</div>
+        </div>
+    </div>
+ 
+
+    <div *ngIf="isLocked" class="lockout-message" style="color:orange;">
+      <p>Account is locked. Try again in {{ unlockCountdown }} seconds.</p>
+    </div>
+ 
+    <button type="submit" class="btn btn-primary" [disabled]="isLocked">Login</button>
+  </form>
+</div>

@@ -1,0 +1,36 @@
+  <div class="feedback-page-container">
+      <div class="themed-card">
+        <h3 class="card-title">Add Feedback</h3>
+    
+        <form (ngSubmit)="onSubmit()" #feedbackForm="ngForm" novalidate>
+          <div class="form-group">
+            <label for="content">Feedback <span>*</span></label>
+            <textarea
+              id="content"
+              name="content"
+              [(ngModel)]="feedbackText"
+              required
+              class="form-control"
+              maxlength="100"
+              (input)="feedbackText = feedbackText.slice(0, 100)">
+            </textarea>
+    
+            <div class="char-counter">
+              {{ feedbackText.trim().length }}/100 characters
+            </div>
+    
+            <div *ngIf="submitted && feedbackText.trim().length === 0" class="error" style="color:red">
+              Feedback is required and cannot be just spaces.
+            </div>
+            <div *ngIf="submitted && feedbackText.length > 100" class="error">
+              Feedback should only have 100 characters.
+            </div>
+          </div>
+    
+          <div class="button-group">
+            <button type="submit" class="btn-primary" [disabled]="feedbackForm.invalid">Submit</button>
+            <button type="button" class="btn-primary" (click)="onCancel()">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>

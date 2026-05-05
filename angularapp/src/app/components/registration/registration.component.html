@@ -1,0 +1,109 @@
+<div class="registration-container">
+  <h2>User Registration</h2>
+
+  <form #registrationForm="ngForm" (ngSubmit)="onSubmit(registrationForm)" novalidate>
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" [(ngModel)]="user.Username" required
+        pattern="^[A-Za-z][A-Za-z0-9]*$" class="form-control" #username="ngModel" />
+
+      <div *ngIf="username.invalid && (username.touched || username.dirty)" style="color:red;">
+        <span *ngIf="username.errors?.required">Username is required.</span>
+        <span *ngIf="username.errors?.pattern">
+          Username must start with a letter, contain only letters and numbers, and cannot have spaces.
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" [(ngModel)]="user.Email" required
+        pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" class="form-control" #email="ngModel" />
+      <div *ngIf="email.invalid && (email.touched || email.dirty)" class="text-danger">
+        <span *ngIf="email.errors?.required" style="color: red;">Email is required.</span>
+        <span *ngIf="email.errors?.email || email.errors?.pattern" style="color: red;">
+          Please enter a valid email address (e.g., <strong>user@example.com</strong>).
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="mobile">Mobile Number</label>
+     
+      <input type="tel" id="mobile" name="mobile" [(ngModel)]="user.MobileNumber" required pattern="^[0-9]{10}$"
+        maxlength="10" class="form-control" #mobile="ngModel" />
+      <div *ngIf="mobile.invalid && (mobile.touched || mobile.dirty)" class="text-danger">
+        <span *ngIf="mobile.errors?.required" style="color: red;">Mobile number is required.</span>
+        <span *ngIf="mobile.errors?.pattern" style="color: red;">Enter a valid 10-digit mobile number.</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" [(ngModel)]="user.Password" required
+        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$" class="form-control"
+        #password="ngModel" />
+      <div *ngIf="password.invalid && (password.touched || password.dirty)" class="text-danger">
+        <span *ngIf="password.errors?.required" style="color: red;">Password is required.</span>
+        <span *ngIf="password.errors?.pattern" style="color: red;">
+          include:
+          <ul class="mb-0" style="color: red;">
+            <li>One uppercase letter (e.g., <strong>A</strong>, <strong>B</strong>)</li>
+            <li>One lowercase letter (e.g., <strong>a</strong>, <strong>b</strong>)</li>
+            <li>One digit (e.g., <strong>1</strong>, <strong>2</strong>)</li>
+            <li>One special character (e.g., <strong>@</strong>, <strong>#</strong>, <strong>$</strong>)</li>
+          </ul>
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="confirmPassword">Confirm Password</label>
+      <input type="password" id="confirmPassword" name="confirmPassword" [(ngModel)]="confirmPassword" required
+        class="form-control" #confirmPasswordField="ngModel" />
+      <div *ngIf="confirmPasswordField.invalid && (confirmPasswordField.touched || confirmPasswordField.dirty)"
+        class="text-danger" style="color: red;">
+        Confirm password is required.
+      </div>
+      <div *ngIf="user.Password !== confirmPassword && (confirmPasswordField.touched || confirmPasswordField.dirty)"
+        class="text-danger" style="color: red;">
+        Passwords do not match.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="role">Role</label>
+      <select id="role" name="role" [(ngModel)]="user.UserRole" required class="form-control" #role="ngModel">
+        <option value="User">User</option>
+        <option value="Admin">Admin</option>
+      </select>
+      <div *ngIf="role.invalid && (role.touched || role.dirty)" class="text-danger" style="color: red;">
+        Role selection is required.
+      </div>
+    </div>
+
+
+
+    <div class="form-group" *ngIf="user.UserRole === 'Admin'">
+      <label for="adminKey">Admin Secret Key</label>
+      <input type="password" id="adminKey" name="adminKey" [(ngModel)]="adminKey" required class="form-control"
+        #adminKeyField="ngModel" />
+      <div *ngIf="adminKeyField.invalid && (adminKeyField.touched || adminKeyField.dirty)" class="text-danger"
+        style="color: red;">
+        Admin secret key is required for Admin registration.
+      </div>
+    </div>
+
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+
+    <div *ngIf="successMessage" class="alert alert-success">
+      {{ successMessage }}
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="registrationForm.invalid">
+      Register
+    </button>
+  </form>
+</div>

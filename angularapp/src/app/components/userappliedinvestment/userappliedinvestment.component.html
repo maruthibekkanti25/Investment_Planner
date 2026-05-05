@@ -1,0 +1,35 @@
+<h2>Applied Investments</h2>
+
+
+
+<table>
+  <thead>
+    <tr>
+      <th>S.No</th>
+      <th>Investment Name</th>
+      <th>Application Date</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let investment of paginatedApplications; let i = index">
+      <td>{{ (currentPage - 1) * itemsPerPage + i + 1 }}</td>
+      <td>{{ getInvestmentNameById(investment.InvestmentId) }}</td>
+      <td>{{ investment.ApplicationDate | date: 'yyyy-MM-dd' }}</td>
+      <td>{{ investment.ApplicationStatus }}</td>
+      <td>
+        <button *ngIf="investment.ApplicationStatus === 'Pending'"
+          (click)="deleteApplication(investment.InvestmentApplicationId.toString())">
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h3 *ngIf="appliedInvestments.length == 0">No Applied Investments Found</h3>
+<div class="pagination-controls" *ngIf="appliedInvestments.length > itemsPerPage">
+  <button (click)="goToPreviousPage()" [disabled]="currentPage === 1">Previous</button>
+  <span>Page {{ currentPage }} of {{ totalPages }}</span>
+  <button (click)="goToNextPage()" [disabled]="currentPage === totalPages">Next</button>
+</div>

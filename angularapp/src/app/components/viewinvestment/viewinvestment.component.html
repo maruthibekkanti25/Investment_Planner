@@ -1,0 +1,52 @@
+<div class="investment-container">
+  <h2>Investment Plans</h2>
+
+  <form (input)="onSearch()" class="search-form">
+    <label for="type">Investment Type:</label>
+    <input id="type" [(ngModel)]="searchType" name="type" />
+  </form>
+
+  <table *ngIf="filteredPlans.length > 0">
+    <thead>
+      <tr>
+        <th>S.No</th>
+        <th>Name</th>
+        <th>Expected Return</th>
+        <th>Risk Level</th>
+        <th>Duration</th>
+        <th>Minimum Investment</th>
+        <th>Investment Type</th>
+        <th>Documents Required</th>
+        <th>Description</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let plan of paginatedPlans; let i = index">
+        <td>{{ (currentPage - 1) * itemsPerPage + i + 1 }}</td>
+        <td>{{ plan.Name }}</td>
+        <td>{{ plan.ExpectedReturn }}</td>
+        <td>{{ plan.RiskLevel }}</td>
+        <td>{{ plan.DurationInMonths }}</td>
+        <td>{{ plan.MinimumInvestment }}</td>
+        <td>{{ plan.InvestmentType }}</td>
+        <td>{{ plan.DocumentsRequired }}</td>
+        <td>{{ plan.Description }}</td>
+        <td>
+          <button (click)="handleEdit(plan)">Edit</button>
+          <button
+  (click)="handleDelete(plan)" 
+  [title]="investmentIdsWithApplications.has(plan.InvestmentId!) ? 'Cannot delete: Investment has applications' : ''">
+  Delete
+</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="pagination-controls" *ngIf="filteredPlans.length > itemsPerPage">
+    <button (click)="goToPreviousPage()" [disabled]="currentPage === 1">Previous</button>
+    <span>Page {{ currentPage }} of {{ totalPages }}</span>
+    <button (click)="goToNextPage()" [disabled]="currentPage === totalPages">Next</button>
+  </div>
+</div>

@@ -1,0 +1,5 @@
+<app-adminnav *ngIf="isAdmin() && role === 'Admin'"></app-adminnav>
+
+<app-usernav *ngIf="isUser() && role === 'User'"></app-usernav>
+
+<app-navbar *ngIf="!isLoggedIn"></app-navbar>

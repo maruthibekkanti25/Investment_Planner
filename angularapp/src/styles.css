@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    background-image: url("https://www.amsive.com/wp-content/uploads/2025/04/Green-Blue-Black-Geometric-Dos-and-Donts-if-Investment-Instagram-Post-1080-%C3%97-712-px-2025-04-02T113033.938.jpg%22");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-color: #f0f0f0;
+    overflow-x: hidden;
+   
+  }
+
+/* Chrome, Safari, Edge autofill fix */
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #000 inset !important; /* Black background */
+  -webkit-text-fill-color: #fff !important; /* White text */
+  color: #fff !important;
+  /* opacity: 0; */
+  /* border: 1px solid rgba(124, 58, 237, 0.4) !important; */
+  transition: background-color 5000s ease-in-out 0s; /* Prevent flicker */
+}
+
+/* Firefox autofill fix */
+input:-moz-autofill {
+  background-color: #000 !important;
+  /* opacity: 0; */
+  color: #fff !important;
+  /* border: 1px solid rgba(124, 58, 237, 0.4) !important; */
+}
+

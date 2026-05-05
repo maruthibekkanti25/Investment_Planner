@@ -1,0 +1,48 @@
+<div class="investment-list">
+  <h2>Available Investment Plans</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>S.No</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Expected Return</th>
+        <th>Risk Level</th>
+        <th>Duration (Months)</th>
+        <th>Minimum Investment</th>
+        <th>Investment Type</th>
+        <th>Documents Required</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let investment of paginatedInvestments; let i = index">
+        <td>{{ (currentPage - 1) * pageSize + i + 1 }}</td>
+        <td>{{ investment.Name }}</td>
+        <td>{{ investment.Description }}</td>
+        <td>{{ investment.ExpectedReturn }}%</td>
+        <td>{{ investment.RiskLevel }}</td>
+        <td>{{ investment.DurationInMonths }}</td>
+        <td>{{ investment.MinimumInvestment }}</td>
+        <td>{{ investment.InvestmentType }}</td>
+        <td>{{ investment.DocumentsRequired }}</td>
+        <td>
+          <button [disabled]="appliedInvestmentIds.includes(investment.InvestmentId)"
+            (click)="applyInvestment(investment)">
+            {{ appliedInvestmentIds.includes(investment.InvestmentId) ? 'Applied' : 'Apply' }}
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="investments.length === 0" class="no-data">
+    No investments found.
+  </div>
+
+  <div class="pagination-controls">
+    <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+    <span>Page {{ currentPage }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage * pageSize >= investments.length">Next</button>
+  </div>
+</div>
